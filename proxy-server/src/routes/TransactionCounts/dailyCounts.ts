@@ -29,7 +29,12 @@
     let pool: ConnectionPool | null = null;
 
     try {
-      pool = await new ConnectionPool(sqlConfig).connect();
+      // Ensure sqlConfig uses 'server' instead of 'host'
+      const { host, ...restConfig } = sqlConfig as any;
+      pool = await new ConnectionPool({
+        ...restConfig,
+        server: (sqlConfig as any).host ?? (sqlConfig as any).server
+      }).connect();
       const request = pool.request();
 
       queryParams.forEach(param => {

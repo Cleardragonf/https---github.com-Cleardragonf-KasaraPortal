@@ -1,6 +1,13 @@
 import express, { Request, Response } from 'express';
 import sql, { ConnectionPool } from 'mssql';
-import { TranslatorPortal } from '../../utils'; // Assuming SQL config is here
+import { TranslatorPortal as RawTranslatorPortal } from '../../utils'; // Assuming SQL config is here
+
+// Ensure the config uses 'server' instead of 'host'
+const TranslatorPortal = {
+  ...RawTranslatorPortal,
+  server: RawTranslatorPortal.host,
+};
+delete (TranslatorPortal as any).host;
 
 const router = express.Router();
 router.use(express.json()); // Middleware for JSON parsing
@@ -28,6 +35,7 @@ router.post('/create', async (req: Request, res: Response) => {
   } = req.body;
 
   try {
+    // Ensure TranslatorPortal config uses 'server' instead of 'host'
     const pool: ConnectionPool = await sql.connect(TranslatorPortal);
     await pool.request()
       .input('processId', sql.UniqueIdentifier, processId)

@@ -18,7 +18,8 @@ export class SchedulerProcess {
   // Function to fetch rows from the TransactionCount_Schedule table
   private async fetchTransactionSchedules(): Promise<any[]> {
     try {
-      await sql.connect(TranslatorPortal);
+      const sqlConfig = { ...TranslatorPortal, server: TranslatorPortal.host, host: undefined };
+      await sql.connect(sqlConfig as any);
       const currentDayOfMonth = new Date().getDate();
       const currentMonth = new Date().getMonth() + 1; // Months are 0-based, so add 1
       const currentYear = new Date().getFullYear();
@@ -97,7 +98,9 @@ export class SchedulerProcess {
     }
 
     try {
-      const pool = await sql.connect(TranslatorPortal);
+      // Ensure TranslatorPortal uses 'server' instead of 'host'
+      const fixedTranslatorPortal = { ...TranslatorPortal, server: TranslatorPortal.host, host: undefined };
+      const pool = await sql.connect(fixedTranslatorPortal as any);
 
       // Check if the processId already exists
       const existingProcess = await pool.request()

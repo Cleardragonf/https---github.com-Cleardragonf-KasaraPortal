@@ -1,5 +1,4 @@
 import { exec } from 'child_process';
-import {config as SqlConfig} from 'mssql';
 
 
 // Define services list
@@ -59,41 +58,38 @@ export const services: { [key in 'tzautoupdate' | 'AJRouter' | 'AdaptivaClient' 
   EdifecsXESManager: 'EdifecsXESManager'
 };
 
-// SQL Server configuration
-export const sqlConfig: SqlConfig = {
-  user: 'EDI_TM_APPID_T',  // Replace with your database username
-  password: 'Edif3c$2016',  // Replace with your database password
-  server: 'DHHSSQLDEVAG2.ne.gov',  // Replace with your SQL Server address
+// SQL Server configuration (for MSSQL, not Postgres)
+export const sqlConfig = {
+  user: 'postgres',  // Replace with your database username
+  password: 'Dv9608nr',  // Replace with your database password
+  host: 'play.ryugame.net',  // Replace with your Postgres server address
   database: 'EDI_ST_NECustom',  // Replace with your database name
-  options: {
-    encrypt: true,  // Use encryption if necessary (e.g., for Azure)
-    trustServerCertificate: true,  // Trust server certificate if needed
-    trustedConnection: true, // This enables Windows Authentication
-  },
+  port: 5432, // Default Postgres port
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
 
-export const sqlConfig2: SqlConfig = {
-  user: 'EDI_TM_APPID_T',  // Replace with your database username
-  password: 'Edif3c$2016',  // Replace with your database password
-  server: 'DHHSSQLDEVAG2.ne.gov',  // Replace with your SQL Server address
-  database: 'EDI_Dev_NECustom',  // Replace with your database name
-  options: {
-    encrypt: true,  // Use encryption if necessary (e.g., for Azure)
-    trustServerCertificate: true,  // Trust server certificate if needed
-    trustedConnection: true, // This enables Windows Authentication
-  },
+export const KasaraPortal = {
+  user: 'postgres',  // Replace with your database username
+  password: 'Dv9608nr',  // Replace with your database password
+  host: 'play.ryugame.net',  // Replace with your Postgres server address
+  database: 'KasaraPortal',  // Replace with your database name
+  port: 5432, // Default Postgres port
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
 
-export const TranslatorPortal: SqlConfig = {
-  user: 'EDI_TM_APPID_T', // Replace with your database username
-  password: 'Edif3c$2016', // Replace with your database password
-  server: 'DHHSSQLDEVAG2.ne.gov', // Replace with your SQL Server address
-  database: 'TranslatorPortal', // Replace with your database name
-  options: {
-      encrypt: true, // Use encryption if necessary (e.g., for Azure)
-      trustServerCertificate: true, // Trust server certificate if needed
-      trustedConnection: true, // This enables Windows Authentication
-  },
+export const TranslatorPortal = {
+  user: 'postgres', // Replace with your database username
+  password: 'Dv9608nr', // Replace with your database password
+  host: 'play.ryugame.net', // Replace with your Postgres server address
+  database: 'KasaraPortal', // Replace with your database name
+  port: 5432, // Default Postgres port
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
 
 

@@ -1,6 +1,6 @@
 import express from 'express';
 import sql, { ConnectionPool } from 'mssql';
-import { TranslatorPortal, sqlConfig2 } from '../utils'; // Import both configs
+import { TranslatorPortal, KasaraPortal } from '../utils'; // Import both configs
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post('/execute-query', express.json(), async (req: express.Request, res: 
 
     try {
         // Try connecting to TranslatorPortal
-        pool = await new ConnectionPool(TranslatorPortal).connect();
+        pool = await new ConnectionPool({ ...TranslatorPortal, server: TranslatorPortal.host }).connect();
         const result = await pool.request().query(query);
         res.status(200).json({
             success: true,
@@ -30,7 +30,7 @@ router.post('/execute-query', express.json(), async (req: express.Request, res: 
 
         try {
             // Fallback to sqlConfig2
-            pool = await new ConnectionPool(sqlConfig2).connect();
+            pool = await new ConnectionPool({ ...KasaraPortal, server: KasaraPortal.host }).connect();
             const result = await pool.request().query(query);
             res.status(200).json({
                 success: true,

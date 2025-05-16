@@ -1,15 +1,17 @@
 import express from 'express';
-import sql, { ConnectionPool } from 'mssql';
-import { TranslatorPortal, sqlConfig2 } from '../utils'; // Import both configs
-import nodemailer from 'nodemailer'; // Import nodemailer for sending emails
-import dotenv from 'dotenv'; // Import dotenv for environment variables
-import path from 'path'; // Import path for resolving file paths
+// Remove mssql imports
+import { TranslatorPortal as KasaraPortal } from '../utils';
+import { Pool } from 'pg'; // Use pg for Postgres
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import path from 'path';
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
 dotenv.config({ path: path.resolve(__dirname, '..', envFile) });
-const proxyServerUrl = process.env.PROXY_SERVER; // ✅ this now works with dotenv
+const proxyServerUrl = process.env.PROXY_SERVER;
 
 const router = express.Router();
+const pool = new Pool(KasaraPortal);
 
 // POST route to execute custom queries
 router.post('/', express.json(), async (req: express.Request, res: express.Response): Promise<void> => {
@@ -22,36 +24,27 @@ router.post('/', express.json(), async (req: express.Request, res: express.Respo
 
     try {
         const query = `
-            INSERT INTO Roles (username, password, email, status, FirstName, LastName, role)
-            VALUES (@username, @password, @mail, @status, @FirstName, @LastName, @Role)
+            INSERT INTO "Authorization" (username, password, email, status, "FirstName", "LastName", role)
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
         `;
+        await pool.query(query, [username, password, email, status, FirstName, LastName, Role]);
 
-        let pool: ConnectionPool | null = null;
-        pool = await new ConnectionPool(TranslatorPortal).connect();
-        await pool.request()
-            .input('username', username)
-            .input('password', password)
-            .input('mail', email)
-            .input('status', status)
-            .input('FirstName', FirstName)
-            .input('LastName', LastName)
-            .input('Role', Role)
-            .query(query);
-
-        // Send email with approval and denial linkss
-        const transporter = nodemailer.createTransport(<nodemailer.TransportOptions>{
-            host: 'mxout.ne.gov', // Use the Nebraska SMTP server
-            port: 25,             // Port 25 is commonly used for non-encrypted SMTP
-            secure: false,        // Set to false as this server likely doesn't use SSL/TLS
-            auth: undefined,      // No authentication required for this server
+        // Send email with approval and denial links
+        const transporter = nodemailer.createTransport({
+          host: 'live.smtp.mailtrap.io',
+          port: 2525,
+          auth: {
+            user: 'api', // <-- your Mailtrap user
+            pass: '6ae52b9bedf8623ecf97ff4e127d543e', // <-- your Mailtrap password
+          },
         });
 
         const approvalLink = `http://${proxyServerUrl}:5001/api/auth/approve?username=${encodeURIComponent(username)}`;
         const denialLink = `http://${proxyServerUrl}:5001/api/auth/deny?username=${encodeURIComponent(username)}`;
 
         const mailOptions = {
-            from: 'chris.warner@nebraska.gov', // Replace with your email
-            to: 'chris.warner@nebraska.gov',
+            from: 'noreply@play.ryugame.net', // Use your own verified domain here
+            to: 'chrismwarner339@gmail.com',
             subject: 'User Approval Required',
             html: `
                 <p>A new user has been created. Please review their profile:</p>
@@ -83,20 +76,14 @@ router.post('/validate', express.json(), async (req: express.Request, res: expre
 
     try {
         const query = `
-            SELECT username, email, role, FirstName, LastName, status
-            FROM Roles
-            WHERE username = @username AND password COLLATE Latin1_General_BIN = @password
+            SELECT username, email, role, "FirstName", "LastName", status
+            FROM "Authorization"
+            WHERE username = $1 AND password = $2
         `;
+        const result = await pool.query(query, [username, password]);
 
-        let pool: ConnectionPool | null = null;
-        pool = await new ConnectionPool(TranslatorPortal).connect();
-        const result = await pool.request()
-            .input('username', username)
-            .input('password', password)
-            .query(query);
-
-        if (result.recordset.length > 0) {
-            const user = result.recordset[0];
+        if (result.rows.length > 0) {
+            const user = result.rows[0];
             if (user.status !== 'Active') {
                 res.status(403).json({ success: false, message: 'Profile isn\'t approved.' });
                 return;
@@ -121,16 +108,11 @@ router.get('/approve', async (req: express.Request, res: express.Response): Prom
 
     try {
         const query = `
-            UPDATE Roles
+            UPDATE "Authorization"
             SET status = 'Active'
-            WHERE username = @username
+            WHERE username = $1
         `;
-
-        let pool: ConnectionPool | null = null;
-        pool = await new ConnectionPool(TranslatorPortal).connect();
-        await pool.request()
-            .input('username', username)
-            .query(query);
+        await pool.query(query, [username]);
 
         res.json({ success: true, message: 'User approved successfully.' });
     } catch (error) {
@@ -149,16 +131,11 @@ router.get('/deny', async (req: express.Request, res: express.Response): Promise
 
     try {
         const query = `
-            UPDATE Roles
+            UPDATE "Authorization"
             SET status = 'Denied'
-            WHERE username = @username
+            WHERE username = $1
         `;
-
-        let pool: ConnectionPool | null = null;
-        pool = await new ConnectionPool(TranslatorPortal).connect();
-        await pool.request()
-            .input('username', username)
-            .query(query);
+        await pool.query(query, [username]);
 
         res.json({ success: true, message: 'User denied successfully.' });
     } catch (error) {
@@ -178,17 +155,11 @@ router.get('/check-username', async (req: express.Request, res: express.Response
     try {
         const query = `
             SELECT COUNT(*) AS count
-            FROM Roles
-            WHERE username = @username
+            FROM "Authorization"
+            WHERE username = $1
         `;
-
-        let pool: ConnectionPool | null = null;
-        pool = await new ConnectionPool(TranslatorPortal).connect();
-        const result = await pool.request()
-            .input('username', username)
-            .query(query);
-
-        const exists = result.recordset[0].count > 0;
+        const result = await pool.query(query, [username]);
+        const exists = parseInt(result.rows[0].count, 10) > 0;
         res.json({ exists });
     } catch (error) {
         console.error('Error checking username:', error);

@@ -13,7 +13,7 @@ import { SchedulerProcess } from './process/TransactionCounts/runScheduler';
 import DatabaseQueryRouter from './routes/DatabaseQueryRouter';
 import { initializeScheduledTask } from './scheduledTask';
 import CredentialsRouter from './routes/CredentialsRouter'; // Adjust the path if necessary
-import { ConnectionPool, pool as mssqlPool } from 'mssql'; // Assuming you're using mssql for database connection
+import { Pool } from 'pg'; // Use Pool for PostgreSQL connection pooling
 import { TranslatorPortal } from './utils';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -23,7 +23,7 @@ const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev'
 dotenv.config({ path: path.resolve(__dirname, '..', envFile) });
 const proxyServerUrl = process.env.PROXY_SERVER; // ✅ this now works with dotenv
 
-const pool = new ConnectionPool(TranslatorPortal);
+const pool = new Pool(TranslatorPortal);
 
 const app = express();
 const port = 5001;

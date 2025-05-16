@@ -8,7 +8,9 @@ import { TranslatorPortal } from '../../utils'; // Adjust path if necessary
 const updateProcessStatus = async (processId: string, status: string, lastSuccessfulRun: string) => {
     console.log(`Updating process ${processId} with status '${status}' and LastSuccessfulRun '${lastSuccessfulRun}'...`);
     try {
-        const pool = await sql.connect(TranslatorPortal);
+        // Fix: Ensure 'server' property is used instead of 'host'
+        const fixedConfig = { ...TranslatorPortal, server: TranslatorPortal.host, host: undefined };
+        const pool = await sql.connect(fixedConfig);
         await pool.request()
             .input('processID', sql.UniqueIdentifier, processId)
             .input('status', sql.VarChar(30), status)
@@ -29,7 +31,8 @@ export const checkAndStartWaitingProcess = async () => {
     console.log('checkAndStartWaitingProcess: Starting process...');
     try {
         // Connect to SQL Server and fetch waiting processes
-        const pool = await sql.connect(TranslatorPortal);
+        const fixedConfig = { ...TranslatorPortal, server: TranslatorPortal.host, host: undefined };
+        const pool = await sql.connect(fixedConfig);
         const result = await pool
             .request()
             .query(`SELECT TOP 1 * FROM ProcessQueue WHERE status = 'waiting' ORDER BY position ASC, weight DESC`);

@@ -1,6 +1,12 @@
 import express, { Request, Response } from 'express';
 import sql, { ConnectionPool } from 'mssql';
-import { TranslatorPortal } from '../../utils'; // Assuming you have a SQL config file
+import { TranslatorPortal as RawTranslatorPortal } from '../../utils'; // Assuming you have a SQL config file
+
+// Fix config: mssql expects 'server', not 'host'
+const TranslatorPortal = {
+  ...RawTranslatorPortal,
+  server: RawTranslatorPortal.host,
+};
 
 const router = express.Router();
 
@@ -13,6 +19,7 @@ router.post('/create', async (req: Request, res: Response) => {
     id,
     transactionType = 'edi',
     description = 'asdf',
+    
     dayOfMonth = '15',
     time = '12:00',
     createdAt = '',

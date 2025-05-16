@@ -1,6 +1,6 @@
 import cron from 'node-cron';
-import sql from 'mssql';
 import { TranslatorPortal } from '../../utils';
+import { Client } from 'pg';
 import { wss } from '../../proxyserver';
 
 export class ProcessCleaner {
@@ -18,8 +18,10 @@ export class ProcessCleaner {
   // Function to remove completed processes and notify clients
   private async removeCompletedProcesses(): Promise<void> {
     try {
-      await sql.connect(TranslatorPortal);
-      const result = await sql.query('EXEC RemoveCompletedProcesses');
+      const client = new Client(TranslatorPortal);
+      await client.connect();
+
+      const result = await client.query('EXEC RemoveCompletedProcesses');
 
       console.log('Completed processes removed');
 
@@ -37,6 +39,7 @@ export class ProcessCleaner {
         }
       });
 
+      await client.end();
     } catch (err) {
       console.error('Error removing completed processes:', err);
     }
