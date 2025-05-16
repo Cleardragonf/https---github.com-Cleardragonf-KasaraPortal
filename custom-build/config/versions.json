@@ -1,0 +1,14 @@
+{
+    "frontend": {
+        "version": "1.0.2",
+        "updateUrl": "\\\\dhhsfs1.hhss.local\\epm$\\_TranslatorTeam\\TranslatorPortal\\frontend\\frontend.zip"
+    },
+    "backend": {
+        "version": "1.0.0",
+        "updateUrl": "https://example.com/backend-update.zip"
+    },
+    "proxyserver": {
+        "version": "1.0.2",
+        "updateUrl": "\\\\dhhsfs1.hhss.local\\epm$\\_TranslatorTeam\\TranslatorPortal\\proxy-server\\proxyserver.zip"
+    }
+}

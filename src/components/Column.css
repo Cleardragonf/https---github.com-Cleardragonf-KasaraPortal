@@ -1,0 +1,49 @@
+.column {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f3f3f3, #e2e2e2);
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    overflow: hidden;
+    flex: 1;
+}
+
+.column-wrapper {
+    transition: flex 0.3s, opacity 0.3s;
+}
+
+.column-wrapper.expanded {
+    flex: 3;
+}
+
+.column-wrapper:not(.expanded) {
+    opacity: 0.6; /* Adjust this value to make the columns more visible */
+}
+
+.column-wrapper:not(.expanded):hover {
+    opacity: 1;
+}
+
+.column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.column-title {
+    cursor: pointer;
+    margin: 0;
+    font-size: 1.6em;
+    color: #333; /* Ensure the text color is always visible */
+    transition: color 0.3s;
+}
+
+.column-title:hover {
+    color: #007bff;
+}
+
+.column-content {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

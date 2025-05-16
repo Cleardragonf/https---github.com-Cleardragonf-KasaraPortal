@@ -1,0 +1,53 @@
+#TODO
+
+- [x] Create Export Feature
+- [x] Create an Automated Deployment Portion for FrontEnd
+    - [ ] Clean up ::START WORK ON
+- [ ] Create an Automated Deployment Portion for Backend
+- [x] Create an Automated Deployment Portion for ProxyServer 
+    - [ ] cLEAN UP ::START WORK ON
+- [x] Create and Work on QueryDatabase
+    -[x] Work on Maximizing the Validations.
+- [x] Create Export feature for Transaction Counts
+- [x] Create Build Automation for Deployment
+- [ ] Update Server Stats to utilize WebSocket for Communications
+    - the following will be the Socket communication for Server Status, from the backend to the proxy server.
+    {
+        type: "Server Status",
+        status: <Info>,
+        message: {
+            server: "DHHSEDI...",
+            ping: ###ms,
+            CPU: ##%,
+            RAM: ##%,
+            C Drive Free: #### of ####,
+            D Drive Free: #### of ####,
+            Services: {
+                Service_1:{
+                    status: <Running, Stopped, Error>
+                },
+                Service_2:{
+                    status: <Running, Stopped, Error>
+                }
+            }
+        }
+    }
+    - the proxy server will then have a return communication incase a user wants to restart, stop etc a servie.
+    {
+        type: "Service Status",
+        status: <Info, Action>,
+        server: 'DHHSEDI...',
+        message: {
+            name: Service_1,
+            state: <Start, Stop, Restart>
+        }
+    }
+- [ ] Update Notifications for the system, so that a Banner...or something will appear for specific messages...that have maybe a ERROR or COMPLETE? need to figure that out a bit.
+- [x] Create Login Page to Access the Application
+    -[x] Create Safe Practicees and Registration for the Login Feature
+- [ ] Create Graphs for Rates...Downtimes etc....
+- [ ] Create a Table for Server Statistics
+    - [ ] Table should contain the following Columns:{
+        Server Name, CPU[amount, timestamp], RAM[amount, timestamp], Storage[amount, timestamp], Ping[measure, timestamp]
+    }
+    -[ ] The server name will be the Identifier and the rest will be LISTS that are updated with new objects this way when they're called....we can display the past present and expected outages.

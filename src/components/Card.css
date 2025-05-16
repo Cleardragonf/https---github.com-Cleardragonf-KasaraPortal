@@ -1,0 +1,90 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.3em;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.card-title:hover {
+    color: #007bff;
+}
+
+.server-status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #fff;
+}
+
+.server-status.online {
+    background-color: #28a745;
+}
+
+.server-status.offline {
+    background-color: #dc3545;
+}
+
+.server-status.checking {
+    background-color: #ffc107;
+}
+
+.card-content {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #555;
+}
+
+.card-item {
+    margin-bottom: 5px;
+}
+
+.gauges-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.gauge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.gauge {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+}
+
+.gauge-label {
+    text-align: center;
+    font-size: 0.9em;
+    color: #333;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}

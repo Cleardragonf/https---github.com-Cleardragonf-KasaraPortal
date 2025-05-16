@@ -1,0 +1,305 @@
+{
+    "columns": [
+        {
+            "title": "Production",
+            "cards": [
+                {
+                    "serverName": "localhost",
+                    "serverUrl": "localhost",
+                    "services": [
+                        { "key": "TM Agent", "value": "Running" },
+                        { "key": "Test Factory", "value": "Running" }
+                    ],
+                    "content": [
+                        { "key": "CPU Usage", "value": "30%" },
+                        { "key": "Memory Usage", "value": "60%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRMQ",
+                    "serverUrl": "\\DHHSEDIPRMQ",
+                    "content": [
+                        { "key": "CPU Usage", "value": "30%" },
+                        { "key": "Memory Usage", "value": "60%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "30%" },
+                        { "key": "Memory Usage", "value": "60%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRProc",
+                    "serverUrl": "\\DHHSEDIPRProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "40%" },
+                        { "key": "Memory Usage", "value": "70%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "40%" },
+                        { "key": "Memory Usage", "value": "70%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRTM1",
+                    "serverUrl": "\\DHHSEDIPRTM1",
+                    "content": [
+                        { "key": "CPU Usage", "value": "50%" },
+                        { "key": "Memory Usage", "value": "80%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "50%" },
+                        { "key": "Memory Usage", "value": "80%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRTM2",
+                    "serverUrl": "\\DHHSEDIPRTM2",
+                    "content": [
+                        { "key": "CPU Usage", "value": "60%" },
+                        { "key": "Memory Usage", "value": "90%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "60%" },
+                        { "key": "Memory Usage", "value": "90%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRORM1",
+                    "serverUrl": "\\DHHSEDIPRORM1",
+                    "content": [
+                        { "key": "CPU Usage", "value": "70%" },
+                        { "key": "Memory Usage", "value": "100%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "70%" },
+                        { "key": "Memory Usage", "value": "100%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRORTM2",
+                    "serverUrl": "\\DHHSEDIPRORTM2",
+                    "content": [
+                        { "key": "CPU Usage", "value": "80%" },
+                        { "key": "Memory Usage", "value": "110%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "80%" },
+                        { "key": "Memory Usage", "value": "110%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRXEProc",
+                    "serverUrl": "\\DHHSEDIPRXEProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "90%" },
+                        { "key": "Memory Usage", "value": "120%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "90%" },
+                        { "key": "Memory Usage", "value": "120%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPRXERte",
+                    "serverUrl": "\\DHHSEDIPRXERte",
+                    "content": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ]
+                },
+                {
+                    "serverName": "SVR254",
+                    "serverUrl": "\\SVR254",
+                    "content": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ]
+                },
+                {
+                    "serverName": "SVR255",
+                    "serverUrl": "\\SVR255",
+                    "content": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIPrTPXM",
+                    "serverUrl": "\\DHHSEDIPrTPXM",
+                    "content": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ],
+                    "services": [
+                        { "key": "CPU Usage", "value": "100%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ]
+                }
+                
+            ]
+        },
+        {
+            "title": "Trading Partner",
+            "cards": [
+                {
+                    "serverName": "DHHSEDITPMQ",
+                    "serverUrl": "\\DHHSEDITPMQ",
+                    "content": [
+                        { "key": "CPU Usage", "value": "25%" },
+                        { "key": "Memory Usage", "value": "55%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPORProc",
+                    "serverUrl": "\\DHHSEDITPORProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "35%" },
+                        { "key": "Memory Usage", "value": "70%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPORTM1",
+                    "serverUrl": "\\DHHSEDITPORTM1",
+                    "content": [
+                        { "key": "CPU Usage", "value": "45%" },
+                        { "key": "Memory Usage", "value": "80%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPORM2",
+                    "serverUrl": "\\DHHSEDITPORTM2",
+                    "content": [
+                        { "key": "CPU Usage", "value": "55%" },
+                        { "key": "Memory Usage", "value": "90%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPTM1",
+                    "serverUrl": "\\DHHSEDITPTM2",
+                    "content": [
+                        { "key": "CPU Usage", "value": "65%" },
+                        { "key": "Memory Usage", "value": "100%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPXEProc",
+                    "serverUrl": "\\DHHSEDITPXEProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "75%" },
+                        { "key": "Memory Usage", "value": "110%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDITPXERte",
+                    "serverUrl": "\\DHHSEDITPXERte",
+                    "content": [
+                        { "key": "CPU Usage", "value": "85%" },
+                        { "key": "Memory Usage", "value": "120%" }
+                    ]
+                },
+                {
+                    "serverName": "SVR252",
+                    "serverUrl": "\\SVR252",
+                    "content": [
+                        { "key": "CPU Usage", "value": "95%" },
+                        { "key": "Memory Usage", "value": "130%" }
+                    ]
+                },
+                {
+                    "serverName": "SVR253",
+                    "serverUrl": "\\SVR253",
+                    "content": [
+                        { "key": "CPU Usage", "value": "105%" },
+                        { "key": "Memory Usage", "value": "140%" }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "System Test",
+            "cards": [
+                {
+                    "serverName": "DHHSEDISysOR",
+                    "serverUrl": "\\DHHSEDISysOR",
+                    "content": [
+                        { "key": "CPU Usage", "value": "25%" },
+                        { "key": "Memory Usage", "value": "55%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDISysProc",
+                    "serverUrl": "\\DHHSEDISysProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "35%" },
+                        { "key": "Memory Usage", "value": "70%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDISysRte",
+                    "serverUrl": "\\DHHSEDISysRte",
+                    "content": [
+                        { "key": "CPU Usage", "value": "45%" },
+                        { "key": "Memory Usage", "value": "80%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDISyDvMQ",
+                    "serverUrl": "\\DHHSEDISyDvMQ",
+                    "content": [
+                        { "key": "CPU Usage", "value": "55%" },
+                        { "key": "Memory Usage", "value": "90%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDISyDvXM",
+                    "serverUrl": "\\DHHSEDISyDvXM",
+                    "content": [
+                        { "key": "CPU Usage", "value": "65%" },
+                        { "key": "Memory Usage", "value": "100%" }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Dev",
+            "cards": [
+                {
+                    "serverName": "DHHSEDIDevProc",
+                    "serverUrl": "\\DHHSEDIDevProc",
+                    "content": [
+                        { "key": "CPU Usage", "value": "15%" },
+                        { "key": "Memory Usage", "value": "45%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIDevRte",
+                    "serverUrl": "\\DHHSEDIDevRte",
+                    "content": [
+                        { "key": "CPU Usage", "value": "25%" },
+                        { "key": "Memory Usage", "value": "55%" }
+                    ]
+                },
+                {
+                    "serverName": "DHHSEDIDevOR",
+                    "serverUrl": "\\DHHSEDIDevOR",
+                    "content": [
+                        { "key": "CPU Usage", "value": "35%" },
+                        { "key": "Memory Usage", "value": "70%" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

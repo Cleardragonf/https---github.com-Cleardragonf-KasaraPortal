@@ -1,0 +1,41 @@
+.animated-background {
+  position: fixed; /* Ensure it stays fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevent scroll bars */
+  z-index: -1;
+}
+
+.bouncing-text {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform 3s ease-in-out; /* Smooth transitions */
+}
+
+.bouncing-text:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  color: black;
+  animation-delay: 0s;
+}
+
+.bouncing-text:nth-child(2) {
+  top: 15%;
+  left: 85%;
+  color: black;
+  animation-delay: 1s;
+}
+
+.rotating-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('https://sos.nebraska.gov/sites/default/files/img/flag.png') no-repeat center/contain;
+  transition: transform 3s ease-in-out; /* Smooth transitions */
+  top: 70%;
+  left: 30%;
+}

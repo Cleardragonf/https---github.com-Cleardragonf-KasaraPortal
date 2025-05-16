@@ -1,0 +1,114 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #8aa3bd; /* Darker blue for better visibility */
+    color: white; /* Ensure text is readable on the navbar */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #002244; /* Add a darker border for contrast */
+}
+
+.navbar-link {
+    margin-right: 1rem;
+    color: white; /* Match the text color to the navbar */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+    background-color: transparent; /* Transparent background for links */
+    display: inline-block;
+}
+
+.navbar-link:hover {
+    background: #002244; /* Even darker blue for hover effect */
+    color: white; /* Keep text white on hover */
+}
+
+.navbar-active-link {
+    font-weight: bold;
+    background: #002244; /* Highlight active link with darker blue */
+    color: white; /* Ensure text is readable on the active link */
+}
+
+.navbar-notification-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+}
+
+.navbar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-dropdown-menu {
+    display: none; /* Default hidden state */
+    background-color: #003366; /* Match the navbar background */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for dropdown */
+    border: 1px solid #002244; /* Match the border style */
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.navbar-dropdown-menu:hover {
+    display: none; /* Ensure it doesn't stay visible on hover */
+}
+
+.navbar-dropdown-menu .navbar-link {
+    display: block;
+    padding: 8px 16px;
+    color: white; /* Match the text color */
+}
+
+.navbar-dropdown-menu .navbar-link:hover {
+    background: #002244; /* Subtle hover effect */
+    color: white; /* Keep text white on hover */
+}
+
+.navbar-dropdown button.navbar-link {
+    background-color: transparent; /* Transparent background for links */
+    border: none;
+    cursor: pointer;
+}
+
+.navbar .navbar-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.navbar-btn-outline-secondary {
+    color: white; /* Ensure text color is always white */
+    background-color: transparent; /* Match the background of the navbar links */
+    border: 1px solid transparent; /* Remove border for consistency */
+    padding: 10px 15px; /* Match padding with navbar links */
+    border-radius: 4px; /* Match border radius with navbar links */
+    transition: background 0.3s, color 0.3s; /* Add smooth transition */
+    --bs-btn-color: white; /* Set button color to match the navbar */
+}
+
+.navbar-btn-outline-secondary:hover {
+    background-color: #002244; /* Match hover effect with navbar links */
+    color: white; /* Keep text white on hover */
+}

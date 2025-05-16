@@ -1,0 +1,40 @@
+/* App.css or SimpleTable.css */
+.table-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+  
+  .styled-table th, .styled-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .styled-table th {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .styled-table th:hover {
+    background-color: #45a049;
+  }
+  
+  .styled-table td {
+    border-top: 1px solid #ddd;
+  }
+  
+  .styled-table .sorted-asc {
+    color: green;
+  }
+  
+  .styled-table .sorted-desc {
+    color: red;
+  }
+  

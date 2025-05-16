@@ -1,0 +1,45 @@
+.notification {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.info {
+    background-color: #17a2b8;
+}
+
+.notification.warning {
+    background-color: #ffc107;
+}
+
+.notification button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    color: white;
+    position: relative;
+    top: -2px;
+}
+
+.modal.show {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-dialog {
+    margin-top: 10%;
+}
